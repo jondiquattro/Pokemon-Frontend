@@ -52,7 +52,6 @@ function Middle() {
         <div style={{display: "inline-flex"}}>
         <img src={pokemonImage} alt={"pokemon"}/>
           <div style={{width: '100%'}}>
-            {/*<p>{poke[0].abilities[0].ability.name}</p>*/}
             {poke.length > 0?
               <div>{poke[0].abilities.map((power, idx)=>
                 <p key={idx}>{power.ability.name}</p>
@@ -61,11 +60,17 @@ function Middle() {
               :<p>{""}</p>
             }
             <div>
-            <p>some data some stats or something</p>
-            <p>some data some stats or something</p>
-            <p>some data some stats or something</p>
-            <p>some data some stats or something</p>
-            <p>some data some stats or something</p>
+              {poke.length > 0?
+                <div>{poke[0].stats.map((stat, idx)=>
+                  <div key={idx}>
+                  <p >{stat.stat.name}</p>
+                    <p style={{backgroundColor: "blue", width: `${stat.base_stat*1.5}px`}}>{stat.base_stat}</p>
+                  </div>
+                )}
+                </div>
+                :<p>{""}</p>
+              }
+
             </div>
 
           </div>
