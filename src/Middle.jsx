@@ -67,7 +67,7 @@ function Middle() {
             <p>some data some stats or something</p>
             <p>some data some stats or something</p>
             </div>
-            
+
           </div>
 
         </div>
