@@ -34,11 +34,11 @@
 
 .middle {
   display: inline-flex;
-  width: 60vw;
+  width: 58vw;
   order: 2;
 }
 
 .footer {
   background: bisque;
-  height: 20vh;
+  height: 16vh;
 }
