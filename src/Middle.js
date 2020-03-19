@@ -19,7 +19,7 @@ export function Middle(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
       }}>
-        {/*<img src={pokemonImage} alt={"pokemon"}/>*/}
+        <img src={props.pokemonImage} alt={"pokemon"}/>
 
       </div>
       <Stats poke={props.poke}/>

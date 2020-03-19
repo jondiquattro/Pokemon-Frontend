@@ -15,7 +15,7 @@ function Body() {
 
   const [pokeUrl, setPokeUrl] = useState('https://pokeapi.co/api/v2/pokemon/25');
 
-//   let pokemonImage = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png';
+  let pokemonImage = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png';
 // let pokemonImage =  './resources/download.jpeg';
 
   async function fetchPokeIndex() {
@@ -71,6 +71,7 @@ function Body() {
           setPoke={setPoke}
           poke={poke}
           pokeIndex={pokeIndex}
+          image={pokemonImage}
         />
         <Right />
       </div>
