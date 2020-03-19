@@ -12,15 +12,12 @@ function Body() {
   const [poke, setPoke] = useState({});
   const [pokeIndex, setPokeIndex] = useState([]);
   const [selectedPoke, setSelectedPoke] = useState();
+  const [pokemonImage, setPokemonImage] = useState("https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png");
 
-  const [pokeUrl, setPokeUrl] = useState('https://pokeapi.co/api/v2/pokemon/25');
-
-  let pokemonImage = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png';
-// let pokemonImage =  './resources/download.jpeg';
 
   async function fetchPokeIndex() {
 
-    let pokeDex = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20'
+    let pokeDex = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=101';
     let pokemonArr = [];
 
     let fetchPoke = await superAgent.get(pokeDex);
@@ -38,17 +35,35 @@ function Body() {
     fetchPoke();
   },[pokeIndex, selectedPoke]);
 
+
+  function parseImageFromIndex(index){
+    if(index <= 9){
+      return `00${index}`
+    }
+    if(index > 9 && index <= 99 ){
+      return `0${index}`;
+    }
+    if(index > 99 && index <= 999 ){
+      return `${index}`;
+    }
+    else{
+      return index;
+    }
+  }
+
   async function fetchPoke() {
-    let fetchMonster = await superAgent.get(selectedPoke ? selectedPoke : 'https://pokeapi.co/api/v2/pokemon/1/');
+    let fetchMonster = await superAgent.get(selectedPoke ? selectedPoke : 'https://pokeapi.co/api/v2/pokemon/25/');
     setPoke({...fetchMonster})
   }
 
   async function findPoke(name) {
 
-  pokeIndex[0].results.forEach((poke) => {
+  pokeIndex[0].results.forEach((poke, idx) => {
 
     if(poke.name == name){
-      setSelectedPoke(poke.url)
+      setSelectedPoke(poke.url);
+     parseImageFromIndex(idx)
+      setPokemonImage(`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${ parseImageFromIndex(idx +1)}.png`)
     }
 
   });
@@ -71,7 +86,7 @@ function Body() {
           setPoke={setPoke}
           poke={poke}
           pokeIndex={pokeIndex}
-          image={pokemonImage}
+          pokemonImage={pokemonImage}
         />
         <Right />
       </div>

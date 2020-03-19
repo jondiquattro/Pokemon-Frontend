@@ -1,13 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Type from "./statsAndInfo/Type";
 import Stats from "./statsAndInfo/Stats";
 import PokeInfo from "./statsAndInfo/PokeInfo";
 
-const superAgent = require('superagent');
-
 export function Middle(props) {
-
-
 
   return (
     <div className="middle">
